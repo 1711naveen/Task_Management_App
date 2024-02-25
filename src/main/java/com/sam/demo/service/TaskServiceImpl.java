@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sam.demo.dto.CountType;
 import com.sam.demo.entity.Task;
 import com.sam.demo.repo.TaskRepository;
 
@@ -17,7 +18,7 @@ public class TaskServiceImpl implements TaskService{
 	
 	@Override
 	public List<Task> getTask() {
-		return taskRepo.findAll();
+		return taskRepo.getAllTaskDueDateDesc();
 	}
 	
 	@Override
@@ -42,5 +43,11 @@ public class TaskServiceImpl implements TaskService{
 	public void delete(Integer Id) {
 		// TODO Auto-generated method stub
 		taskRepo.deleteById(Id);
+	}
+	
+	@Override
+	public List<CountType> getPercentageGroupByType() {
+		// TODO Auto-generated method stub
+		return taskRepo.getGroupByType();
 	}
 }

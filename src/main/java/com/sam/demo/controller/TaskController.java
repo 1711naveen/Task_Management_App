@@ -2,11 +2,9 @@ package com.sam.demo.controller;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sam.demo.dto.CountType;
 import com.sam.demo.entity.Task;
 import com.sam.demo.service.TaskService;
 
@@ -76,6 +75,11 @@ public class TaskController {
 			message.put("message", id + "task not found");
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
 		}
+	}
+	
+	@GetMapping("task/vData/percent")
+	public List<CountType> getCountTask(){
+		return taskService.getPercentageGroupByType();
 	}
 	
 	
