@@ -6,6 +6,8 @@ import java.util.Optional;
 import com.sam.demo.dto.CountType;
 import com.sam.demo.entity.Task;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 public interface TaskService {
 	
 	public List<Task> getTask();
@@ -19,5 +21,7 @@ public interface TaskService {
 	public void delete(Integer Id);
 	
 	public List<CountType> getPercentageGroupByType();
+	
+	public boolean exportPdf(HttpServletResponse response) throws Exception;
 
 }

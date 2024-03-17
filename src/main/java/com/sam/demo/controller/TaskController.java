@@ -20,6 +20,7 @@ import com.sam.demo.entity.Task;
 import com.sam.demo.service.TaskService;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @CrossOrigin("*")
@@ -82,5 +83,12 @@ public class TaskController {
 		return taskService.getPercentageGroupByType();
 	}
 	
-	
+	@GetMapping("/pdf")
+	public void pdfExport(HttpServletResponse responce) throws Exception {
+		responce.setContentType("application/pdf");
+		responce.addHeader("Content-Disposition", "attachment;filename=tasks.pdf");
+		taskService.exportPdf(responce);
 	}
+	
+	
+}
